@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.pagingcompose.presentation.CharacterScreen
+import com.example.pagingcompose.presentation.characters.CharacterScreen
 import com.example.pagingcompose.ui.theme.PagingComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 

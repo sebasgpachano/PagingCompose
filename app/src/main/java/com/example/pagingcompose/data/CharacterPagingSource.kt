@@ -2,7 +2,7 @@ package com.example.pagingcompose.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.pagingcompose.presentation.model.CharacterModel
+import com.example.pagingcompose.presentation.characters.model.CharacterModel
 import okio.IOException
 import javax.inject.Inject
 

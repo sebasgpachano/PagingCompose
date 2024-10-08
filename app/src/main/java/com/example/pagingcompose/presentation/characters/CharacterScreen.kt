@@ -1,4 +1,4 @@
-package com.example.pagingcompose.presentation
+package com.example.pagingcompose.presentation.characters
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -26,7 +26,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.AsyncImage
-import com.example.pagingcompose.presentation.model.CharacterModel
+import com.example.pagingcompose.presentation.characters.model.CharacterModel
 
 @Composable
 fun CharacterScreen(characterViewModel: CharacterViewModel = hiltViewModel()) {

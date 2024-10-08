@@ -1,6 +1,6 @@
 package com.example.pagingcompose.data.response
 
-import com.example.pagingcompose.presentation.model.CharacterModel
+import com.example.pagingcompose.presentation.characters.model.CharacterModel
 import com.google.gson.annotations.SerializedName
 
 data class CharacterResponse(
@@ -11,7 +11,7 @@ data class CharacterResponse(
     @SerializedName("species") val species: String,
     @SerializedName("gender") val gender: String,
 ){
-    fun toPresentation():CharacterModel {
+    fun toPresentation(): CharacterModel {
         return CharacterModel(
             id = id,
             name = name,

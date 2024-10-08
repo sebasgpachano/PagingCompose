@@ -1,4 +1,4 @@
-package com.example.pagingcompose.presentation.model
+package com.example.pagingcompose.presentation.characters.model
 
 data class CharacterModel (
     val id: Int,
