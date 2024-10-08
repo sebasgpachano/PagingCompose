@@ -2,6 +2,7 @@ package com.example.pagingcompose.presentation.characters
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -29,7 +31,10 @@ import coil.compose.AsyncImage
 import com.example.pagingcompose.presentation.characters.model.CharacterModel
 
 @Composable
-fun CharacterScreen(characterViewModel: CharacterViewModel = hiltViewModel()) {
+fun CharacterScreen(
+    characterViewModel: CharacterViewModel = hiltViewModel(),
+    navController: NavController
+) {
 
     val characters = characterViewModel.characters.collectAsLazyPagingItems()
 
@@ -63,7 +68,7 @@ fun CharacterScreen(characterViewModel: CharacterViewModel = hiltViewModel()) {
         }
 
         else -> {
-            CharactersList(characters)
+            CharactersList(characters, navController)
 
             if(characters.loadState.append is LoadState.Loading) {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -79,26 +84,29 @@ fun CharacterScreen(characterViewModel: CharacterViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun CharactersList(characters: LazyPagingItems<CharacterModel>) {
+fun CharactersList(characters: LazyPagingItems<CharacterModel>, navController: NavController) {
 
     LazyColumn {
         items(characters.itemCount) {
             characters[it]?.let { characterModel ->
-                ItemList(characterModel)
+                ItemList(characterModel, navController)
             }
         }
     }
 }
 
 @Composable
-fun ItemList(characterModel: CharacterModel) {
+fun ItemList(characterModel: CharacterModel, navController: NavController) {
     Box(
         modifier = Modifier
             .padding(24.dp)
             .clip(RoundedCornerShape(24))
             .border(2.dp, Color.Green, shape = RoundedCornerShape(0, 24, 0, 24))
             .fillMaxWidth()
-            .height(250.dp),
+            .height(250.dp)
+            .clickable {
+                navController.navigate("details/${characterModel.id}")
+            },
         contentAlignment = Alignment.BottomCenter
     ) {
         AsyncImage(
