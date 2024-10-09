@@ -22,7 +22,7 @@ fun NavGraph(startDestination: String = "character_list") {
             arguments = listOf(navArgument("characterId") { type = NavType.StringType })
         ) { backStackEntry ->
             val characterId = backStackEntry.arguments?.getString("characterId")
-            DetailsScreen(characterId = characterId)
+            DetailsScreen(characterId = characterId, navController = navController)
         }
     }
 }
