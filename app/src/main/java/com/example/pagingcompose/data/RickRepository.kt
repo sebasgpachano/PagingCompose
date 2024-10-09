@@ -4,6 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.pagingcompose.presentation.characters.model.CharacterModel
+import com.example.pagingcompose.presentation.details.model.DetailsModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -19,5 +20,9 @@ class RickRepository @Inject constructor(val apiService: ApiService) {
             pagingSourceFactory = {
                 CharacterPagingSource(apiService)
             }).flow
+    }
+
+    suspend fun getCharacter(id: Int): DetailsModel {
+        return apiService.getCharacter(id).toDetails()
     }
 }

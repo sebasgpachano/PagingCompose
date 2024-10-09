@@ -21,7 +21,11 @@ class CharacterPagingSource @Inject constructor(private val apiService: ApiServi
             val prevKey = if(page > 0) page -1 else null
             val nextKey = if(response.info.next != null) page + 1 else null
 
-            LoadResult.Page(data = characters.map { it.toPresentation() }, prevKey = prevKey, nextKey = nextKey)
+            LoadResult.Page(
+                data = characters.map { it.toCharacter() },
+                prevKey = prevKey,
+                nextKey = nextKey
+            )
 
         }catch (exception: IOException) {
             LoadResult.Error(exception)
