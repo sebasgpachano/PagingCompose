@@ -1,1 +1,1 @@
-Retrofit with paging and jetpack compose
+Retrofit with paging and Jetpack Compose
