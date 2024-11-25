@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -51,10 +51,14 @@ fun DetailsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Detalle del Personaje") },
+                title = { Text(text = "Detalles del Personaje") },
                 navigationIcon = {
                     IconButton(onClick = { navController.navigateUp() }) {
-                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Volver")
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Volver",
+                            tint = Color.White
+                        )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -83,19 +87,19 @@ fun DetailsScreen(
                             modifier = Modifier.size(250.dp),
                             contentScale = ContentScale.Crop
                         )
-                        Text(text = "Nombre: $details.name", color = Color.White, fontSize = 24.sp)
+                        Text(text = "Nombre: ${details.name}", color = Color.White, fontSize = 24.sp)
                         Text(
-                            text = "Status: $details.status",
+                            text = "Status: ${details.status}",
                             color = Color.White,
                             fontSize = 18.sp
                         )
                         Text(
-                            text = "Especie: $details.species",
+                            text = "Especie: ${details.species}",
                             color = Color.White,
                             fontSize = 18.sp
                         )
                         Text(
-                            text = "Género: $details.gender",
+                            text = "Género: ${details.gender}",
                             color = Color.White,
                             fontSize = 18.sp
                         )
